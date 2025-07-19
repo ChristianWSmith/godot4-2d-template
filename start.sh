@@ -101,10 +101,9 @@ fi
 
 
 # Start the editor
+log "Starting Godot..."
 if [[ "${platform}" =~ ^"Darwin" ]]; then
-    log "Starting Godot..."
-    open -W "${EDITOR}" --args "${SCRIPT_DIR}/project.godot" "$@"
+    "${EDITOR}/Contents/MacOS/Godot" "${SCRIPT_DIR}/project.godot" "$@"
 else
-    log "Starting Godot..."
     "${EDITOR}" "${SCRIPT_DIR}/project.godot" "$@"
 fi
