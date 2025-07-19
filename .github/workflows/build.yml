@@ -28,7 +28,7 @@ jobs:
       if: runner.os == 'Windows'
       shell: pwsh
       run: |
-        choco install wget
+        choco install wget zip
 
     - name: Build
       shell: bash
@@ -38,7 +38,7 @@ jobs:
     - name: Bundle
       shell: bash
       run: |
-        zip build.zip build/
+        zip -r build.zip build/
         mkdir -p "${{ env.UPLOAD_DIR }}"
         mv build.zip "${{ env.UPLOAD_DIR }}"
 
