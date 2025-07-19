@@ -6,7 +6,7 @@ BUILD_DIR="${SCRIPT_DIR}/build"
 mkdir -p "${BUILD_DIR}"
 
 BUILD_TYPE="${1:-debug}"
-BUILD_TYPE="${BUILD_TYPE,,}"
+BUILD_TYPE="$(echo "${BUILD_TYPE}" | tr '[:upper:]' '[:lower:]')"
 
 case "${BUILD_TYPE}" in
     debug)
