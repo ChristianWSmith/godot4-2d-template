@@ -102,7 +102,7 @@ fi
 
 # Start the editor
 if [[ "${platform}" =~ ^"Darwin" ]]; then
-    open "${EDITOR}" "${SCRIPT_DIR}/project.godot" "$@"
+    open "${EDITOR}" "${SCRIPT_DIR}/project.godot" --args "$@"
 else
     "${EDITOR}" "${SCRIPT_DIR}/project.godot" "$@"
 fi
