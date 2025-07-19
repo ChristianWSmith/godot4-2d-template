@@ -102,7 +102,9 @@ fi
 
 # Start the editor
 if [[ "${platform}" =~ ^"Darwin" ]]; then
+    log "Starting Godot..."
     open "${EDITOR}" --args "${SCRIPT_DIR}/project.godot" "$@"
 else
+    log "Starting Godot..."
     "${EDITOR}" "${SCRIPT_DIR}/project.godot" "$@"
 fi
