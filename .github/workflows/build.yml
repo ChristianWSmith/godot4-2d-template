@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  UPLOAD_DIR: build
+  BUILD_TYPE: release
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+            - os: ubuntu-latest
+            - os: windows-latest
+            - os: macos-latest
+
+    steps:
+    - name: Checkout code (All)
+      uses: actions/checkout@v4
+
+    - name: Build
+      shell: bash
+      run: |
+        ./build.sh
+
+    - name: Upload Executable
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.os }}
+        path: ${{ env.UPLOAD_DIR }}
