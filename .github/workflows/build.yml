@@ -8,6 +8,7 @@ on:
 
 env:
   UPLOAD_DIR: upload
+  BUILD_TYPE: release
 
 jobs:
   build:
@@ -16,17 +17,8 @@ jobs:
       matrix:
         include:
             - os: ubuntu-latest
-              build_type: release
             - os: windows-latest
-              build_type: release
             - os: macos-latest
-              build_type: release
-            - os: ubuntu-latest
-              build_type: debug
-            - os: windows-latest
-              build_type: debug
-            - os: macos-latest
-              build_type: debug
 
     steps:
     - name: Checkout code (All)
@@ -41,7 +33,7 @@ jobs:
     - name: Build
       shell: bash
       run: |
-        ./build.sh ${{ matrix.build_type }}
+        ./build.sh ${{ env.BUILD_TYPE }}
 
     - name: Bundle
       shell: bash
@@ -53,5 +45,5 @@ jobs:
     - name: Upload Executable
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.os }}-${{ matrix.build_type }}
+        name: ${{ matrix.os }}
         path: ${{ env.UPLOAD_DIR }}
