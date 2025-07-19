@@ -24,7 +24,7 @@ jobs:
     - name: Checkout code (All)
       uses: actions/checkout@v4
 
-    - name: Install Deployment Tools (Windows)
+    - name: Install Dependencies (Windows)
       if: runner.os == 'Windows'
       shell: pwsh
       run: |

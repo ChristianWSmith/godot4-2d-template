@@ -57,7 +57,7 @@ if [ ! -e "${EDITOR}" ]; then
     log "Engine not found, checking for archive..."
     if [ ! -e "${ENGINE_DOWNLOAD_FILE}" ]; then
         log "Archive not found, downloading..."
-        wget -O "${ENGINE_DOWNLOAD_FILE}" "${ENGINE_URL}" -q --show-progress
+        wget -O "${ENGINE_DOWNLOAD_FILE}" "${ENGINE_URL}" > /dev/null 2>&1
     else
         log "Archive found: ${ENGINE_DOWNLOAD_FILE}"
     fi
@@ -85,7 +85,7 @@ if [ ! -e "${EXPORT_TEMPLATES_DIR}" ]; then
     pushd "${EDITOR_DIR}" > /dev/null 2>&1
     if [ ! -e "${EXPORT_TEMPLATES_DOWNLOAD_FILE}" ]; then
         log "Archive not found, downloading..."
-        wget -O "${EXPORT_TEMPLATES_DOWNLOAD_FILE}" "${EXPORT_TEMPLATES_URL}" -q --show-progress
+        wget -O "${EXPORT_TEMPLATES_DOWNLOAD_FILE}" "${EXPORT_TEMPLATES_URL}" > /dev/null 2>&1
     else
         log "Archive found: ${EXPORT_TEMPLATES_DOWNLOAD_FILE}"
     fi
