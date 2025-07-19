@@ -41,4 +41,4 @@ case "${platform}" in
         exit 1
 esac
 
-"${SCRIPT_DIR}/start.sh" --headless $BUILD_TYPE_ARG "${TARGET}" "build/${ARTIFACT}"
+"${SCRIPT_DIR}/start.sh" --verbose --headless $BUILD_TYPE_ARG "${TARGET}" "build/${ARTIFACT}"
