@@ -24,6 +24,12 @@ jobs:
     - name: Checkout code (All)
       uses: actions/checkout@v4
 
+    - name: Install Deployment Tools (Windows)
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: |
+        choco install wget
+
     - name: Build
       shell: bash
       run: |
